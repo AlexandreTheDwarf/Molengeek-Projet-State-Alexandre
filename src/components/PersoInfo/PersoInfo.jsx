@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import "./PersoInfo.scss";
 
-function PersoInfo({ step, setstep }) {
+function PersoInfo({ step, setStep }) {
   const [name, setName] = useState("");  
   const [email, setEmail] = useState("");  
   const [phone, setPhone] = useState("");  
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
-    setstep(step + 1);
+    setStep(step + 1);
   };
 
   return (
@@ -56,7 +56,7 @@ function PersoInfo({ step, setstep }) {
         </div>
 
         <div className='PersoInfoBot'>
-          <button type="submit">NEXT STEP</button>
+          <button className="ButtonNext" type="submit">NEXT STEP</button>
         </div>
       </form>
     </div>

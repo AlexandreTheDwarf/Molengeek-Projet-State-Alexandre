@@ -1,0 +1,104 @@
+.PersoPlan{
+    width: 70%;
+    height: 95%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    .PersoPlanTop{
+        width: 90%;
+        margin-top: 1.5em;
+        h1{
+            color: #00234F;
+            margin-bottom: 0.25em;
+        }
+        p{
+            margin-top: 0;
+            color: hsl(231, 11%, 63%)
+        }
+    }
+    .PersoPlanBody{
+        .PersoPlanCardContainer{
+            width: 100%;
+            height: 60%;
+            display: flex;
+            align-items: center;
+            gap: 5%;
+            margin-bottom: 1em;
+
+            .Card{
+                width: 25%;
+                height: 70%;
+                padding: 1em 1.5em;
+                border: solid 1px hsl(231, 11%, 63%);
+                border-radius: 15px;
+
+                display: flex;
+                flex-direction: column;
+                gap: 3em;
+
+                .CardBot{
+                    h3{
+                        margin-bottom: 0;
+                        color: #00234F;
+                    }
+                    span{
+                        margin-top: 0;
+                        color:hsl(231, 11%, 63%);
+                    }
+                }
+            }
+        }
+        .PersoPlanSelector{
+            width: 100%;
+            height: 20%;
+            padding: 0.5em 0em;
+
+            background-color: hsl(206, 94%, 87%);
+
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            .selected{
+                color:#00234F;
+                font-weight: bold;
+            }
+
+            span{
+                color: hsl(231, 11%, 63%);
+            }
+        }
+        .PersoPlanBot{
+            width: 100%;
+            height: 20%;
+            margin-top: 3em;
+    
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+    
+
+            .ButtonBack{
+                border: none;
+                background-color: white;
+                color: #00234F;
+                padding: 1.5em 2em;
+                border-radius: 1em;
+    
+                cursor: pointer;
+            }
+
+            .ButtonNext{
+                border: none;
+                background-color: #00234F;
+                color: white;
+                padding: 1.5em 2em;
+                border-radius: 1em;
+    
+                cursor: pointer;
+            }
+        }
+    } 
+}
