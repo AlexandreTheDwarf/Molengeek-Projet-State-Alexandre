@@ -1,0 +1,67 @@
+.PersoInfo{
+    width: 70%;
+    height: 95%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    .PersoInfoTop{
+        width: 90%;
+        margin-top: 1.5em;
+        h1{
+            color: #00234F;
+            margin-bottom: 0.25em;
+        }
+        p{
+            margin-top: 0;
+            color: hsl(231, 11%, 63%)
+        }
+    }
+
+    .PersoInfoBody{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+
+        div{
+            height: 30%;
+            width: 100%;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            input{
+                border-radius: 15px;
+                border: solid 1px lightgray;
+                padding: 1.1em 1em;
+
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .PersoInfoBot{
+            width: 100%;
+            height: 20%;
+            margin-top: 3em;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+
+            button{
+                border: none;
+                background-color: #00234F;
+                color: white;
+                padding: 1.5em 2em;
+                border-radius: 1em;
+
+                cursor: pointer;
+            }
+        }
+    }
+}

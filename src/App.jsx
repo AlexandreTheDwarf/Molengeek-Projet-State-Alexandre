@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Menu from './components/Menu/Menu'
+import MyContainer from './components/MyContainer/MyContainer'
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <Menu step={step}/>
+      <MyContainer step={step} setstep={setstep}/>
     </>
   )
 }
