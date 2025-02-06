@@ -20,7 +20,7 @@ function PersoInfo({ step, setStep }) {
 
       <form className='PersoInfoBody' onSubmit={handleSubmit}>
         <div>
-            <label htmlFor="name">Your name:</label>
+            <label htmlFor="name">Your name: {name}</label>
             <input 
             type="text" 
             id="name" 
@@ -32,7 +32,7 @@ function PersoInfo({ step, setStep }) {
         </div>
 
         <div>
-            <label htmlFor="email">Your email:</label>
+            <label htmlFor="email">Your email: {email}</label>
             <input 
             type="email" 
             id="email" 
@@ -44,7 +44,7 @@ function PersoInfo({ step, setStep }) {
         </div>
 
         <div>
-            <label htmlFor="phone">Your phone number:</label>
+            <label htmlFor="phone">Your phone number: {phone}</label>
             <input 
             type="tel" 
             id="phone" 
