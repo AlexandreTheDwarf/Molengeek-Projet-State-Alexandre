@@ -15,7 +15,7 @@ function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice, car
             // Remove if already in
             setCartAddOn(cartAddOn.filter(item => item !== Product));
         }else{
-            setCartAddOn(cartAddOn.push(Product))
+            setCartAddOn([...cartAddOn,Product])
         }
       
         if (subscription === "monthly") {
@@ -56,9 +56,9 @@ function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice, car
             <p>You have the option of monthly or yearly billing</p>
         </div>
         <div className='MenuAddOnsBody'>
-            <div className='MenuAddOnsChoice'>
+            <div className='MenuAddOnsChoice' onClick={() => {Price("Online")}}>
                 <div className='MenuAddOnsChoiceLeft'>
-                    <input type="checkbox" name="" id="" onClick={() => {Price("Online")}}/>
+                    <input type="checkbox" checked={cartAddOn.includes("Online")}/>
                 </div>
                 <div className='MenuAddOnsChoiceCenter'>
                     <h3>Online Service</h3>
@@ -72,9 +72,9 @@ function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice, car
                     </span>
                 </div>
             </div>
-            <div className='MenuAddOnsChoice'>
+            <div className='MenuAddOnsChoice' onClick={() => {Price("Storage")}}>
                 <div className='MenuAddOnsChoiceLeft'>
-                    <input type="checkbox" name="" id="" onClick={() => {Price("Storage")}}/>
+                    <input type="checkbox" checked={cartAddOn.includes("Storage")}/>
                 </div>
                 <div className='MenuAddOnsChoiceCenter'>
                     <h3>Larger Storage</h3>
@@ -88,9 +88,9 @@ function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice, car
                     </span>
                 </div>
             </div>
-            <div className='MenuAddOnsChoice'>
+            <div className='MenuAddOnsChoice' onClick={() => {Price("Customizable")}}>
                 <div className='MenuAddOnsChoiceLeft'>
-                    <input type="checkbox" name="" id="" onClick={() => {Price("Customizable")}}/>
+                    <input type="checkbox" checked={cartAddOn.includes("Customizable")}/>
                 </div>
                 <div className='MenuAddOnsChoiceCenter'>
                     <h3>Customizable Profile</h3>
