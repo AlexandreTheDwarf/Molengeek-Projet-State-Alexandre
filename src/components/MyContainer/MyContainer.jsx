@@ -6,6 +6,7 @@ import PersoInfo from '../PersoInfo/PersoInfo'
 import PersoPlan from '../PersoPlan/PersoPlan'
 import MenuAddOns from '../MenuAddOns/MenuAddOns'
 import Summary from '../Summary/Summary'
+import ThankYou from '../ThankYou/ThankYou'
 
 function MyContainer() {
   const [step, setStep] = useState(1)  
@@ -32,6 +33,9 @@ function MyContainer() {
                 :
                 step === 4 ?
                 <Summary step={step} setStep={setStep} subscription={subscription} choicePlan={choicePlan} cartAddOn={cartAddOn} totalPrice={totalPrice}/>
+                :
+                step === 5 ?
+                <ThankYou/>
                 :
                 ""
             }
