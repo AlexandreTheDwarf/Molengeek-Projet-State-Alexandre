@@ -1,0 +1,62 @@
+.MenuAddOns{
+    width: 70%;
+    height: 95%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    .MenuAddOnsTop{
+        width: 90%;
+        margin-top: 1.5em;
+        h1{
+            color: #00234F;
+            margin-bottom: 0.25em;
+        }
+        p{
+            margin-top: 0;
+            color: hsl(231, 11%, 63%)
+        }
+    }
+
+    .MenuAddOnsBody{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+
+        background-color: chocolate;
+    }
+
+    .MenuAddOnsBot{
+        width: 100%;
+        height: 20%;
+        margin-top: 3em;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+
+        .ButtonBack{
+            border: none;
+            background-color: white;
+            color: #00234F;
+            padding: 1.5em 2em;
+            border-radius: 1em;
+
+            cursor: pointer;
+        }
+
+        .ButtonNext{
+            border: none;
+            background-color: #00234F;
+            color: white;
+            padding: 1.5em 2em;
+            border-radius: 1em;
+
+            cursor: pointer;
+        }
+    }
+}
