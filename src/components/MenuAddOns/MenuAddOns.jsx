@@ -1,7 +1,7 @@
 import React from 'react'
 import "./MenuAddOns.scss"
 
-function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice}) {
+function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice, cartAddOn, setCartAddOn}) {
     const handleGoNext = () => {
         setStep(step + 1);  // Passe à l'étape suivante
     };
@@ -10,6 +10,45 @@ function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice}) {
         setStep(step - 1);  // Retour à l'étape précédente
     };
 
+    const Price = (Product) => {
+        if (cartAddOn.includes(Product)){
+            // Remove if already in
+            setCartAddOn(cartAddOn.filter(item => item !== Product));
+        }else{
+            setCartAddOn(cartAddOn.push(Product))
+        }
+      
+        if (subscription === "monthly") {
+          switch (Product) {
+            case "Online":
+              setTotalPrice(totalPrice + 1);
+              break;
+            case "Storage":
+              setTotalPrice(totalPrice + 2);
+              break;
+            case "Customizable":
+              setTotalPrice(totalPrice + 2);
+              break;
+            default:
+              break;
+          }
+        } else {
+          switch (Product) {
+            case "Online":
+              setTotalPrice(totalPrice + 12);
+              break;
+            case "Storage":
+              setTotalPrice(totalPrice + 20);
+              break;
+            case "Customizable":
+              setTotalPrice(totalPrice + 20);
+              break;
+            default:
+              break;
+          }
+        }
+      };
+
   return (
     <div className='MenuAddOns'>
         <div className='MenuAddOnsTop'>
@@ -17,7 +56,54 @@ function MenuAddOns({step, setStep, subscription, totalPrice, setTotalPrice}) {
             <p>You have the option of monthly or yearly billing</p>
         </div>
         <div className='MenuAddOnsBody'>
-
+            <div className='MenuAddOnsChoice'>
+                <div className='MenuAddOnsChoiceLeft'>
+                    <input type="checkbox" name="" id="" onClick={() => {Price("Online")}}/>
+                </div>
+                <div className='MenuAddOnsChoiceCenter'>
+                    <h3>Online Service</h3>
+                    <span>Acces to multiplayer games</span>
+                </div>
+                <div className='MenuAddOnsChoiceRight'>
+                    <span>
+                        {
+                            subscription == "monthly" ? "+1$/mo" : "+12$/yr"
+                        }
+                    </span>
+                </div>
+            </div>
+            <div className='MenuAddOnsChoice'>
+                <div className='MenuAddOnsChoiceLeft'>
+                    <input type="checkbox" name="" id="" onClick={() => {Price("Storage")}}/>
+                </div>
+                <div className='MenuAddOnsChoiceCenter'>
+                    <h3>Larger Storage</h3>
+                    <span>Extra of 1 TB cloud save</span>
+                </div>
+                <div className='MenuAddOnsChoiceRight'>
+                    <span>
+                        {
+                            subscription == "monthly" ? "+2$/mo" : "+20$/yr"
+                        }
+                    </span>
+                </div>
+            </div>
+            <div className='MenuAddOnsChoice'>
+                <div className='MenuAddOnsChoiceLeft'>
+                    <input type="checkbox" name="" id="" onClick={() => {Price("Customizable")}}/>
+                </div>
+                <div className='MenuAddOnsChoiceCenter'>
+                    <h3>Customizable Profile</h3>
+                    <span>Custom theme on your profile</span>
+                </div>
+                <div className='MenuAddOnsChoiceRight'>
+                    <span>
+                        {
+                            subscription == "monthly" ? "+2$/mo" : "+20$/yr"
+                        }
+                    </span>
+                </div>
+            </div>
         </div>
         <div className='MenuAddOnsBot'>
           <button className="ButtonBack" type="button" onClick={handleGoBack}>GO BACK</button> 

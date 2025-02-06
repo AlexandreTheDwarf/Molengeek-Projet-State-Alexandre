@@ -11,9 +11,10 @@ function MyContainer() {
   const [subscription, setSubscription] = useState("monthly")
   const [choicePlan, setChoicePlan] = useState("")
   const [totalPrice, setTotalPrice] = useState(0)
+  const [cartAddOn, setCartAddOn] = useState([])
 
   console.log(totalPrice)
-
+  console.log(cartAddOn)
   return (
     <div className='MyContainer'>
         <Menu step={step}/>
@@ -26,7 +27,7 @@ function MyContainer() {
                 <PersoPlan step={step} setStep={setStep} subscription={subscription} setSubscription={setSubscription} choicePlan={choicePlan} setChoicePlan={setChoicePlan} setTotalPrice={setTotalPrice}/> 
                 :
                 step === 3 ?
-                <MenuAddOns step={step} setStep={setStep} subscription={subscription} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>
+                <MenuAddOns step={step} setStep={setStep} subscription={subscription} totalPrice={totalPrice} setTotalPrice={setTotalPrice} cartAddOn={cartAddOn} setCartAddOn={setCartAddOn}/>
                 :
                 ""
             }
