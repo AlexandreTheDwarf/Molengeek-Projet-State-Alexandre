@@ -1,50 +1,23 @@
 import React from 'react';
 import "./PersoPlan.scss";
-import ToggleBtn from '../ToggleBtn/ToggleBtn'
+import ToggleBtn from '../ToggleBtn/ToggleBtn';
 
-function PersoPlan({ step, setStep, subscription, setSubscription, choicePlan, setChoicePlan, setTotalPrice }) { 
+function PersoPlan({ step, setStep, subscription, setSubscription, choicePlan, setChoicePlan, setTotalPrice, plans }) {
   const handleGoNext = () => {
     setStep(step + 1);  // Passe à l'étape suivante
-    Price(choicePlan)
   };
 
   const handleGoBack = () => {
     setStep(step - 1);  // Retour à l'étape précédente
   };
 
-  const Price = (plan) => {
-  
+  const updatePrice = (plan) => {
     if (subscription === "monthly") {
-      switch (plan) {
-        case "Arcade":
-          setTotalPrice(9);
-          break;
-        case "Advanced":
-          setTotalPrice(12);
-          break;
-        case "Pro":
-          setTotalPrice(15);
-          break;
-        default:
-          break;
-      }
+      setTotalPrice(plans[plan.toLowerCase()].monthly);  // Utilise les données JSON
     } else {
-      switch (plan) {
-        case "Arcade":
-          setTotalPrice(90);
-          break;
-        case "Advanced":
-          setTotalPrice(120);
-          break;
-        case "Pro":
-          setTotalPrice(150);
-          break;
-        default:
-          break;
-      }
+      setTotalPrice(plans[plan.toLowerCase()].yearly);  // Utilise les données JSON
     }
   };
-  
 
   return (
     <div className='PersoPlan'>
@@ -55,56 +28,40 @@ function PersoPlan({ step, setStep, subscription, setSubscription, choicePlan, s
 
       <div className='PersoPlanBody'>
         <div className='PersoPlanCardContainer'>
-            <div className={`Card ${choicePlan === "Arcade" ? "active" : ""}`} onClick={() => {setChoicePlan("Arcade")}}>
+          {Object.keys(plans).map(planKey => {
+            const plan = plans[planKey];
+            return (
+              <div
+                key={planKey}
+                className={`Card ${choicePlan === planKey ? "active" : ""}`}
+                onClick={() => {
+                  setChoicePlan(planKey);
+                  updatePrice(planKey);
+                }}
+              >
                 <div className='CardTop'>
-                    <img src="../../public/img/arcade.svg" alt="" />
+                  <img src={`../../public/img/${planKey}.svg`} alt={planKey} />
                 </div>
                 <div className='CardBot'>
-                    <h3>Arcade</h3>
-                    <span>
-                        {
-                            subscription === "monthly" ? "$9/mo" : "$90/yr"
-                        }
-                    </span>
+                  <h3>{planKey.charAt(0).toUpperCase() + planKey.slice(1)}</h3>
+                  <span>
+                    {subscription === "monthly" ? `$${plan.monthly}/mo` : `$${plan.yearly}/yr`}
+                  </span>
                 </div>
-            </div>
-            <div className={`Card ${choicePlan === "Advanced" ? "active" : ""}`} onClick={() => {setChoicePlan("Advanced")}}>
-                <div className='CardTop'>
-                    <img src="../../public/img/advenced.svg" alt="" />
-                </div>
-                <div className='CardBot'>
-                    <h3>Advanced</h3>
-                    <span>
-                        {
-                            subscription === "monthly" ? "$12/mo" : "$120/yr"
-                        }
-                    </span>
-                </div>
-            </div>
-            <div className={`Card ${choicePlan === "Pro" ? "active" : ""}`} onClick={() => {setChoicePlan("Pro")}}>
-                <div className='CardTop'>
-                    <img src="../../public/img/pro.svg" alt="" />
-                </div>
-                <div className='CardBot'>
-                    <h3>Pro</h3>
-                    <span>
-                        {
-                            subscription === "monthly" ? "$15/mo" : "$150/yr"
-                        }
-                    </span>
-                </div>
-            </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className='PersoPlanSelector'> 
-            <span className={subscription === "monthly" ? "selected" : ""}>Monthly</span>
-                <ToggleBtn subscription={subscription} setSubscription={setSubscription}/>
-            <span className={subscription === "yearly" ? "selected" : ""}>Yearly</span>
+        <div className='PersoPlanSelector'>
+          <span className={subscription === "monthly" ? "selected" : ""}>Monthly</span>
+          <ToggleBtn subscription={subscription} setSubscription={setSubscription} />
+          <span className={subscription === "yearly" ? "selected" : ""}>Yearly</span>
         </div>
-        
+
         <div className='PersoPlanBot'>
-          <button className="ButtonBack" type="button" onClick={handleGoBack}>GO BACK</button> 
-          <button className="ButtonNext" type="button" onClick={handleGoNext} disabled={choicePlan == ""}>NEXT STEP</button> 
+          <button className="ButtonBack" type="button" onClick={handleGoBack}>GO BACK</button>
+          <button className="ButtonNext" type="button" onClick={handleGoNext} disabled={choicePlan === ""}>NEXT STEP</button>
         </div>
       </div>
     </div>
